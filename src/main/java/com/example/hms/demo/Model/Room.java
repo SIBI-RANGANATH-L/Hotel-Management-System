@@ -6,19 +6,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Room")
 public class Room {
+
+    
+    
     private int roomNumber;
-    private String roomType; // e.g., Single, Double, Suite
+    private String roomType;
     private double pricePerNight;
-    private String status; // e.g., Available, Occupied, Out of Service
-    private List<String> amenities; // e.g., WiFi, TV
-    private List<Occupant> occupants; // List of occupants (if any)
-    private String lastCleaned;
+    private String status;
+    private List<String> amenities;
+    private List<String> occupants;
+    private String lastCleaned; // Change lastCleaned to Date
 
-    // Constructors
-    public Room() {
-    }
+    // Constructors, Getters, and Setters
 
-    public Room(int roomNumber, String roomType, double pricePerNight, String status, List<String> amenities, List<Occupant> occupants, String lastCleaned) {
+    public Room(int roomNumber, String roomType, double pricePerNight, String status, List<String> amenities, List<String> occupants, String lastCleaned) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.pricePerNight = pricePerNight;
@@ -69,11 +70,11 @@ public class Room {
         this.amenities = amenities;
     }
 
-    public List<Occupant> getOccupants() {
+    public List<String> getOccupants() {
         return occupants;
     }
 
-    public void setOccupants(List<Occupant> occupants) {
+    public void setOccupants(List<String> occupants) {
         this.occupants = occupants;
     }
 
@@ -83,18 +84,5 @@ public class Room {
 
     public void setLastCleaned(String lastCleaned) {
         this.lastCleaned = lastCleaned;
-    }
-
-    @Override
-    public String toString() {
-        return "Room{" +
-                "roomNumber=" + roomNumber +
-                ", roomType='" + roomType + '\'' +
-                ", pricePerNight=" + pricePerNight +
-                ", status='" + status + '\'' +
-                ", amenities=" + amenities +
-                ", occupants=" + occupants +
-                ", lastCleaned=" + lastCleaned +
-                '}';
     }
 }

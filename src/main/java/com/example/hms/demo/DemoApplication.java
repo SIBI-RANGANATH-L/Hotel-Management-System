@@ -6,14 +6,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
 
 @SpringBootApplication
-@EnableSwagger2
+
 public class DemoApplication {
 
     public static void main(String[] args) {
@@ -21,12 +19,16 @@ public class DemoApplication {
     }
 
     @Bean
-    public Docket swaggerConfig() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.hms.demo"))
-                .paths(PathSelectors.any())
-                .build();
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("Hotel Management System API")
+                        .version("1.0.0")
+                        .description("API documentation for the Hotel Management System")
+                        .contact(new Contact()
+                                .name("Your Name")
+                                .email("your_email@example.com")
+                                .url("https://example.com")));
     }
 }
 
