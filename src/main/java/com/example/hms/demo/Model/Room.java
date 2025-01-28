@@ -2,14 +2,17 @@ package com.example.hms.demo.Model;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "Room")
+
+@Document(collection = "demoRoom")
 public class Room {
 
-    
-    
-    private int roomNumber;
+    @Id
+    @Field("_id") // Maps the MongoDB _id field to roomNumber
+    private String roomNumber;
     private String roomType;
     private double pricePerNight;
     private String status;
@@ -19,7 +22,7 @@ public class Room {
 
     // Constructors, Getters, and Setters
 
-    public Room(int roomNumber, String roomType, double pricePerNight, String status, List<String> amenities, List<String> occupants, String lastCleaned) {
+    public Room(String roomNumber, String roomType, double pricePerNight, String status, List<String> amenities, List<String> occupants, String lastCleaned) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.pricePerNight = pricePerNight;
@@ -30,11 +33,11 @@ public class Room {
     }
 
     // Getters and Setters
-    public int getRoomNumber() {
+    public String getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(int roomNumber) {
+    public void setRoomNumber(String roomNumber) {
         this.roomNumber = roomNumber;
     }
 

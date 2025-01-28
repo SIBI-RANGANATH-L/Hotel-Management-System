@@ -1,19 +1,15 @@
 package com.example.hms.demo.Model;
 
-
-
-import java.util.Date;
-
 public class Occupant {
     private String name; // Name of the occupant
-    private Date checkInDate; // Check-in date
-    private Date checkOutDate; // Check-out date
+    private String checkInDate; // Check-in date
+    private String checkOutDate; // Check-out date
 
     // Constructors
     public Occupant() {
     }
 
-    public Occupant(String name, Date checkInDate, Date checkOutDate) {
+    public Occupant(String name, String checkInDate, String checkOutDate) {
         this.name = name;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
@@ -28,19 +24,19 @@ public class Occupant {
         this.name = name;
     }
 
-    public Date getCheckInDate() {
+    public String getCheckInDate() {
         return checkInDate;
     }
 
-    public void setCheckInDate(Date checkInDate) {
+    public void setCheckInDate(String checkInDate) {
         this.checkInDate = checkInDate;
     }
 
-    public Date getCheckOutDate() {
+    public String getCheckOutDate() {
         return checkOutDate;
     }
 
-    public void setCheckOutDate(Date checkOutDate) {
+    public void setCheckOutDate(String checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
 
