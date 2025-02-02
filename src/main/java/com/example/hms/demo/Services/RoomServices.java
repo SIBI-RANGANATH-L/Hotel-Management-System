@@ -1,5 +1,6 @@
 package com.example.hms.demo.Services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
-import com.example.hms.demo.Model.Occupant;
 import com.example.hms.demo.Model.Room;
 import com.example.hms.demo.Repository.RoomRepository;
 
@@ -36,7 +36,7 @@ public class RoomServices {
         return mongoTemplate.findOne(query, Room.class);
     }
 
-    public Room updateRoomStatusAndOccupants(int roomNumber, String status, List<Occupant> occupants) {
+    public Room updateRoomStatusAndOccupants(String roomNumber, String status, List<?> occupants) {
 
 
         Query query = new Query(Criteria.where("roomNumber").is(roomNumber));
@@ -50,6 +50,17 @@ public class RoomServices {
 
     public Room findRoomByRoomNumber(String roomNumber) {
         return roomRepo.findRoomByRoomNumber(roomNumber);
+    }
+
+    public List<String> getRoomListOfUser(String userId) {
+
+        List<Room> lst= roomRepo.findAllByOccupantsContaining(userId);
+        List<String> roomList = new ArrayList<>();
+
+        for(int i=0;i<lst.size();i++){
+            roomList.add(lst.get(i).getRoomNumber());
+        }
+        return roomList;    
     }
 
    

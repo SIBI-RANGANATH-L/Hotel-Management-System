@@ -107,7 +107,7 @@ public class RoomController {
   }
 
   @PatchMapping("rooms/{roomNumber}/{status}")
-  public ResponseEntity<?> updateRoomStatus(@PathVariable int roomNumber, @PathVariable String status,@RequestBody(required=false) List<Occupant> occupants){
+  public ResponseEntity<?> updateRoomStatus(@PathVariable String roomNumber, @PathVariable String status,@RequestBody(required=false) List<Occupant> occupants){
         if(StringUtils.isEmpty(status)){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Status is required");
         }

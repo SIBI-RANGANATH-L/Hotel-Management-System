@@ -27,14 +27,15 @@ public class UserController {
     @PostMapping("/add")
 public ResponseEntity<?> createUser(@RequestBody User user) {
 
-    System.out.println("---------------------------------------------------------------------------------------------------------");
-    // Debugging: Print user object
-    System.out.println("Received user: " + user.toString());
-    System.out.println("---------------------------------------------------------------------------------------------------------");
+    // System.out.println("---------------------------------------------------------------------------------------------------------");
+    // // Debugging: Print user object
+    // System.out.println("Received user: " + user.toString());
+    // System.out.println("---------------------------------------------------------------------------------------------------------");
 
     userRepo.save(user);
     return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully"); 
 }
+    
     // Read
     @GetMapping("/get")
     public List<User> getAllUsers(){
